@@ -38,6 +38,9 @@ controller.logIn = async function(logInInfor){
             ){
             throw new Error("You must be verified Email")
         }
+        else{
+            view.showComponents('trangChu');
+        }
     } catch(err){
         view.setText("log-in-error",err.message)
         view.enable("log-in-submit-btn")
