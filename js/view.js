@@ -50,14 +50,14 @@ view.showComponents = function(name) {
                         )
                     ]
                     if (allPassed(validateResult)) {
-                            console.log("OK")
-                            controller.register(registerInfo)
-                        }
+                        console.log("OK")
+                        controller.register(registerInfo)
                     }
-                    break
-
                 }
-                
+                break
+
+            }
+
         case 'logIn':
             {
                 let app = document.getElementById('app')
@@ -68,6 +68,9 @@ view.showComponents = function(name) {
 
                 let form = document.getElementById('form-log-in')
                 form.onsubmit = formLogInSubmitHanler
+
+                let btn = document.getElementById("log-in-submit-btn")
+                btn.onclick = homePageClickHandler
 
                 function logInLinkClickHandler() {
                     view.showComponents('register')
@@ -99,11 +102,16 @@ view.showComponents = function(name) {
 
 
                 }
+
+                function homePageClickHandler() {
+                    view.showComponents(`homePage`)
+                }
                 break
             }
-            case `homePage`:{
+        case `homePage`:
+            {
                 let app = document.getElementById('app')
-                app.innerHTML = components.header + components.main + components.footer 
+                app.innerHTML = components.header + components.main + components.footer
                 // + components.messenger
                 let showNav = document.getElementById("icon")
                 showNav.onclick = myFunction
@@ -112,43 +120,45 @@ view.showComponents = function(name) {
                 let user1 = document.getElementById("user1")
                 user1.onclick = userClickHanderler
 
-                function myFunction(){
-                  let  styleNavRespon = document.getElementsByClassName("nav-responsive")[0].style
-                  if(styleNavRespon.display === "none"){
-                    styleNavRespon.display = "block"
-                  } else {
-                    styleNavRespon.display = "none"
-                  }
+                function myFunction() {
+                    let styleNavRespon = document.getElementsByClassName("nav-responsive")[0].style
+                    if (styleNavRespon.display === "none") {
+                        styleNavRespon.display = "block"
+                    } else {
+                        styleNavRespon.display = "none"
+                    }
                 }
-                function userClickHanderler(){
-                  view.showComponents("logIn")
+
+                function userClickHanderler() {
+                    view.showComponents("logIn")
                 }
                 break
             }
     }
 }
 
-view.setText = function(id,text){
-    document.getElementById(id).innerText=text
+view.setText = function(id, text) {
+    document.getElementById(id).innerText = text
 }
-view.validate= function(condition,idErrorTag,messageError){
-    if(condition){
-        view.setText(idErrorTag,'')
+view.validate = function(condition, idErrorTag, messageError) {
+    if (condition) {
+        view.setText(idErrorTag, '')
         return true
-    } else{
-        view.setText(idErrorTag,messageError)
+    } else {
+        view.setText(idErrorTag, messageError)
         return false
     }
 }
-view.disable= function(id){
-    document.getElementById(id).setAttribute("disabled",true)
+view.disable = function(id) {
+    document.getElementById(id).setAttribute("disabled", true)
 }
-view.enable = function(id){
+view.enable = function(id) {
     document.getElementById(id).removeAttribute("disabled")
 }
-function allPassed(validateResult){
-    for(let result of validateResult){
-        if (!result){
+
+function allPassed(validateResult) {
+    for (let result of validateResult) {
+        if (!result) {
             return false
         }
     }

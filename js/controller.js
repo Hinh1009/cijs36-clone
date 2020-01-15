@@ -40,7 +40,7 @@ controller.logIn = async function(logInInfor){
         }
         else{
             // kiem tra xem co phai admin ko
-            // view.showComponents('homePage');
+            view.showComponents('homePage');
         }
     } catch(err){
         view.setText("log-in-error",err.message)
