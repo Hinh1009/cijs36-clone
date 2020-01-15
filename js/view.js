@@ -113,7 +113,25 @@ view.showComponents = function(name) {
                 let app = document.getElementById('app')
                 app.innerHTML = components.header + components.main + components.footer
                 // + components.messenger
+                let showNav = document.getElementById("icon")
+                showNav.onclick = myFunction
+                let user = document.getElementById("user")
+                user.onclick = userClickHanderler
+                let user1 = document.getElementById("user1")
+                user1.onclick = userClickHanderler
 
+                function myFunction() {
+                    let styleNavRespon = document.getElementsByClassName("nav-responsive")[0].style
+                    if (styleNavRespon.display === "none") {
+                        styleNavRespon.display = "block"
+                    } else {
+                        styleNavRespon.display = "none"
+                    }
+                }
+
+                function userClickHanderler() {
+                    view.showComponents("logIn")
+                }
                 break
             }
     }
