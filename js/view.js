@@ -50,14 +50,14 @@ view.showComponents = function(name) {
                         )
                     ]
                     if (allPassed(validateResult)) {
-                            console.log("OK")
-                            controller.register(registerInfo)
-                        }
+                        console.log("OK")
+                        controller.register(registerInfo)
                     }
-                    break
-
                 }
-                
+                break
+
+            }
+
         case 'logIn':
             {
                 let app = document.getElementById('app')
@@ -68,6 +68,9 @@ view.showComponents = function(name) {
 
                 let form = document.getElementById('form-log-in')
                 form.onsubmit = formLogInSubmitHanler
+
+                let btn = document.getElementById("log-in-submit-btn")
+                btn.onclick = homePageClickHandler
 
                 function logInLinkClickHandler() {
                     view.showComponents('register')
@@ -99,39 +102,45 @@ view.showComponents = function(name) {
 
 
                 }
+
+                function homePageClickHandler() {
+                    view.showComponents(`homePage`)
+                }
                 break
             }
-            case `trangChu`:{
+        case `homePage`:
+            {
                 let app = document.getElementById('app')
-                app.innerHTML = components.header + components.main + components.footer 
+                app.innerHTML = components.header + components.main + components.footer
                 // + components.messenger
-                
+
                 break
             }
     }
 }
 
-view.setText = function(id,text){
-    document.getElementById(id).innerText=text
+view.setText = function(id, text) {
+    document.getElementById(id).innerText = text
 }
-view.validate= function(condition,idErrorTag,messageError){
-    if(condition){
-        view.setText(idErrorTag,'')
+view.validate = function(condition, idErrorTag, messageError) {
+    if (condition) {
+        view.setText(idErrorTag, '')
         return true
-    } else{
-        view.setText(idErrorTag,messageError)
+    } else {
+        view.setText(idErrorTag, messageError)
         return false
     }
 }
-view.disable= function(id){
-    document.getElementById(id).setAttribute("disabled",true)
+view.disable = function(id) {
+    document.getElementById(id).setAttribute("disabled", true)
 }
-view.enable = function(id){
+view.enable = function(id) {
     document.getElementById(id).removeAttribute("disabled")
 }
-function allPassed(validateResult){
-    for(let result of validateResult){
-        if (!result){
+
+function allPassed(validateResult) {
+    for (let result of validateResult) {
+        if (!result) {
             return false
         }
     }
