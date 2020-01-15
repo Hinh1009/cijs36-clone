@@ -12,6 +12,13 @@
     <link rel="stylesheet" href="grid.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-analytics.js"></script>
+
 </head>
 <body>
         <!-- header -->
@@ -62,13 +69,20 @@
             </div>
         </div>
         <div class="col span-1-of-3 booked-wapper">
-            <button style="width: 100%; color: white;">ĐẶT NGAY</button>
             <div class="booked-line">
                 <p style="text-align: center; margin-top: 20px; color: #e7ad44;font-size: 130%;">Thông tin</p>
-                <input type="date" value placeholder="Check-in Date">
-                <input type="date" placeholder="Check-out Date">
-                <input type="number" placeholder="Number">
+                <input type="text" placeholder="Your name" class="user_name">
+                <input type="string" placeholder="Phone Number" class="phone_number">
+                <select value="" class="room_type">
+                    <option name="" id="" value="Classic Room">Classic Room</option>
+                    <option name="" id="" value="Budget Room">Budget Room</option>
+                    <option name="" id="" value="Premium Room">Premium Room</option>
+                </select>
+                <input type="date" value placeholder="Check-in Date" class="start_day">
+                <input type="date" placeholder="Check-out Date" class="end_day">
+                
             </div>
+            <button style="width: 100%; color: white;" class="book">ĐẶT NGAY</button>
         </div>
     </div>
 </section>
@@ -138,4 +152,46 @@
     </div>
 </footer>
 </body>
+
+<script>
+     var firebaseConfig = {
+        apiKey: "AIzaSyAbrqcNdwIWidd7ir8FPA91FFyDNR_7XXA",
+        authDomain: "cijs-36-project.firebaseapp.com",
+        databaseURL: "https://cijs-36-project.firebaseio.com",
+        projectId: "cijs-36-project",
+        storageBucket: "cijs-36-project.appspot.com",
+        messagingSenderId: "754924921658",
+        appId: "1:754924921658:web:998fc7287cbd516451e603",
+        measurementId: "G-FRR7ZKXVZV"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    $('.book').on('click',()=>{
+            var start_day = $('.start_day').val();
+            var end_day = $('.end_day').val();
+            var user_name = $('.user_name').val();
+            var phone_number = $('.phone_number').val();
+            var room_type = $('.room_type').val();
+            var  book = {
+                check_in : start_day,
+                check_out : end_day,
+                room_type : room_type,
+                user_name : user_name,
+                phone_number : phone_number
+            }
+            booking(book);
+    })
+
+    booking = async function(book){
+            let result = await firebase
+                .firestore()
+                .collection('book')
+                .add(book)
+            if(result) alert("SUCCESSS !!!!!!!!!!!!");
+    }
+
+</script>
+
 </html>

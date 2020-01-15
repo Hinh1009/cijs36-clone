@@ -31,15 +31,28 @@ components.addRoom = `
 `
 
 components.bookingProcess = `
-<div class="nav-under">
-            <div class="nav-under-container">
-                <h1 class="nav-under-content">Booking process</h1>
-            </div>
-            <div class="nav-under-button">
-                <button class="button"><i class="fas fa-plus"></i></button>
-            </div>
-            <hr class="soft">
+    <div class="nav-under">
+        <div class="nav-under-container">
+            <h1 class="nav-under-content">Booking process</h1>
         </div>
+        <hr class="soft">
+        <div class="component">
+            <table class="table booking_list">
+                <thead>
+                    <tr>
+                        <th>User Name</th>
+                        <th>Phone Number</th>
+                        <th>Room Type</th>
+                        <th>Check In</th>
+                        <th>Check Out</th>
+                    </tr>
+                </thead>
+                <tbody>
+          
+                </tbody>
+            </table>
+        </div>
+    </div>
 `
 components.users = `
 <div class="nav-under">

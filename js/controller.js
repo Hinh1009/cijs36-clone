@@ -40,7 +40,18 @@ controller.logIn = async function(logInInfor){
         }
         else{
             // kiem tra xem co phai admin ko
-            view.showComponents('homePage');
+            let resultAdmin = await firebase
+                .firestore()
+                .collection('admin')
+                .where('email',"==" ,email)
+                .get()
+            if(resultAdmin.empty){
+                view.showComponents('homePage');
+            }
+            else{
+                window.location = "./temp.html"
+            }
+            
         }
     } catch(err){
         view.setText("log-in-error",err.message)

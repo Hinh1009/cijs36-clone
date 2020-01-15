@@ -136,7 +136,7 @@ components.header =`
         <div class="nav-middle-side">
             <div class="nav-detail"><span>Trang chủ</span></div>
             <div class="nav-detail"><span>Giới thiệu</span></div>
-            <div class="nav-detail"><span>Phòng</span></div>
+            <div class="nav-detail"><a href="./room.html"><span>Phòng</span></a></div>
             <div class="nav-detail"><span>Liên hệ</span></div>
         </div>
         <!-- Right Side -->

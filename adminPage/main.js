@@ -1,5 +1,5 @@
 window.onload = init
 function init(){
-   view.showComponents('adminAddRoom')
+   view.showComponents('adminBookingProcess')
 
 }

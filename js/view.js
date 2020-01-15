@@ -69,8 +69,8 @@ view.showComponents = function(name) {
                 let form = document.getElementById('form-log-in')
                 form.onsubmit = formLogInSubmitHanler
 
-                let btn = document.getElementById("log-in-submit-btn")
-                btn.onclick = homePageClickHandler
+                // let btn = document.getElementById("log-in-submit-btn")
+                // btn.onclick = homePageClickHandler
 
                 function logInLinkClickHandler() {
                     view.showComponents('register')
@@ -103,9 +103,9 @@ view.showComponents = function(name) {
 
                 }
 
-                function homePageClickHandler() {
-                    view.showComponents(`homePage`)
-                }
+                // function homePageClickHandler() {
+                //     view.showComponents(`homePage`)
+                // }
                 break
             }
         case `homePage`:
