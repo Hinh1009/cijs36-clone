@@ -101,7 +101,7 @@ view.showComponents = function(name) {
                 }
                 break
             }
-            case `trangChu`:{
+            case `homePage`:{
                 let app = document.getElementById('app')
                 app.innerHTML = components.header + components.main + components.footer 
                 // + components.messenger
@@ -111,7 +111,7 @@ view.showComponents = function(name) {
                 user.onclick = userClickHanderler
                 let user1 = document.getElementById("user1")
                 user1.onclick = userClickHanderler
-                
+
                 function myFunction(){
                   let  styleNavRespon = document.getElementsByClassName("nav-responsive")[0].style
                   if(styleNavRespon.display === "none"){

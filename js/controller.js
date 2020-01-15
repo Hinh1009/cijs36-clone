@@ -39,7 +39,8 @@ controller.logIn = async function(logInInfor){
             throw new Error("You must be verified Email")
         }
         else{
-            view.showComponents('trangChu');
+            // kiem tra xem co phai admin ko
+            // view.showComponents('homePage');
         }
     } catch(err){
         view.setText("log-in-error",err.message)
